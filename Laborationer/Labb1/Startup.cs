@@ -9,7 +9,6 @@ namespace Labb1
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //Ivan Prgomet 1
         }
     }
 }
