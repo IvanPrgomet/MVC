@@ -1,0 +1,29 @@
+﻿@model Labb2.Models.TjugoEttModels
+@{
+    ViewBag.Title = "Tjugo Ett";
+}
+
+<h2>Tjugo Ett</h2>
+@*<input id="ButtonOne" type="button" value="1"/>
+<input id="ButtonTwo" type="button" value="2"/>*@
+
+@using (Html.BeginForm("TjugoEtt", "TjugoEtt", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ActualNumber)
+    @Html.HiddenFor(m => m.CpuTurn)
+
+    <p>
+        1 @Html.RadioButtonFor(m => m.Increment, 1)
+        2 @Html.RadioButtonFor(m => m.Increment, 2)
+    </p>
+    <input id="Button1" type="submit" value="button"/>
+}
+<p>Comouter choice: @Html.DisplayTextFor(m => m.Increment)</p>
+<p>
+    @for (int i = 1; i < Model.ActualNumber + 1; i++)
+    {
+        var num = String.Format(i + ",");
+        @num
+    }
+</p>
+<p>@Html.DisplayTextFor(m => m.GameOverText)</p>
