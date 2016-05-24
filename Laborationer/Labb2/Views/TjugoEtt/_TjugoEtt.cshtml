@@ -1,13 +1,6 @@
 ﻿@model Labb2.Models.TjugoEttModels
-@{
-    ViewBag.Title = "Tjugo Ett";
-}
 
-<h2>Tjugo Ett</h2>
-@*<input id="ButtonOne" type="button" value="1"/>
-<input id="ButtonTwo" type="button" value="2"/>*@
-
-@using (Html.BeginForm("TjugoEtt", "TjugoEtt", FormMethod.Post))
+@using (Ajax.BeginForm("_TjugoEtt", new AjaxOptions {UpdateTargetId = "gameContainer" }))
 {
     @Html.HiddenFor(m => m.ActualNumber)
     @Html.HiddenFor(m => m.CpuTurn)

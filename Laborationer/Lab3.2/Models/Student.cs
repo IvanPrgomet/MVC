@@ -12,6 +12,6 @@ namespace Lab3._2.Models
         public string LastName { get; set; }
         public string PersonNumber { get; set; }
         public string Address { get; set; }
-        public List<Grade> Grades { get; set; }
+        public List<Grade> Grades { get; set; } //virtual används för att EF ska kunna kopplas till den 
     }
 }

@@ -9,21 +9,26 @@ namespace Labb2.Controllers
 {
     public class TjugoEttController : Controller
     {
-        // GET: TjugoEtt
-        public ActionResult TjugoEtt()
+        public ActionResult Index()
         {
-            return View(new TjugoEttModels());
+            return View();
+        }
+
+
+        public PartialViewResult _TjugoEtt()
+        {
+            return PartialView(new TjugoEttModels());
         }
 
         [HttpPost]
-        public ActionResult TjugoEtt(TjugoEttModels model)
+        public PartialViewResult _TjugoEtt(TjugoEttModels model)
         {
             model.IncreaseActualNumber(1);
             model.ComputerChoice();
             model.IncreaseActualNumber(2);
             ModelState.Remove("ActualNumber");
             ModelState.Remove("CpuTurn");
-            return View(model);
+            return PartialView(model);
         }
     }
 }
