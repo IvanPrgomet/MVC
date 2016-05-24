@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.Ajax.Utilities;
 
 namespace Labb2.Models
 {
     public class TjugoEttModels
     {
+        public int CpuChoice { get; set; }
         public int CpuTurn { get; set; }
-        public int Increment { get; set; }
         public int ActualNumber { get; set; }
+        public int Increment { get; set; }
         public string GameOverText { get; set; }
+
         public int Randomize(int min, int max)
         {
             Random random = new Random();
@@ -21,33 +22,37 @@ namespace Labb2.Models
 
         public void ComputerChoice()
         {
-            int cpuChoice = 0;
+            CpuChoice = 0;
+
             switch (ActualNumber)
             {
                 case 19:
-                    cpuChoice = 2;
+                    CpuChoice = 2;
                     break;
                 case 20:
-                    cpuChoice = 1;
+                    CpuChoice = 1;
                     break;
                 default:
-                    if (CpuTurn%2 == 1)
+
+                    if (CpuTurn % 2 == 1)
                     {
-                        cpuChoice = CpuSmartMove(cpuChoice);
+                        CpuChoice = CpuSmartMove(CpuChoice);
                     }
                     else
                     {
-                        cpuChoice = Randomize(1, 3);
+                        CpuChoice = Randomize(1, 3);
+
                     }
                     break;
             }
-            Increment = cpuChoice;
+            Increment = CpuChoice;
             CpuTurn++;
+
         }
 
-    public int CpuSmartMove(int cpuChoice)
+        private int CpuSmartMove(int cpuChoice)
         {
-            switch (ActualNumber%3)
+            switch (ActualNumber % 3)
             {
                 case 1:
                     cpuChoice = 2;
@@ -55,12 +60,14 @@ namespace Labb2.Models
                 case 2:
                     cpuChoice = 1;
                     break;
-                case 0:
-                    cpuChoice  = Randomize(1, 3);
+                default:
+                    cpuChoice = Randomize(1, 3);
                     break;
+
             }
             return cpuChoice;
         }
+
 
         public void IncreaseActualNumber(int i)
         {
@@ -75,8 +82,12 @@ namespace Labb2.Models
                     }
                     else if (i == 2)
                     {
-                        GameOverText = "You loose!";
+                        GameOverText = "You lose";
                     }
+                }
+                else if (ActualNumber == 22)
+                {
+                    GameOverText = "Come ooon...";
                 }
             }
         }
